@@ -21,7 +21,9 @@
         {{ render_field_with_errors(login_user_form.remember) }}
         {{ render_field(login_user_form.next) }}
         {{ render_field(login_user_form.submit, class='btn btn-outline-success') }}
+        <a href="{{ url_for('security.register')}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Регистрация</a>
+        <a href="{{ url_for('security.forgot_password')}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Сброс пароля</a>
       </form>
-      {% include "security/_menu.html" %}
     </div>
+
 {% endblock %}}

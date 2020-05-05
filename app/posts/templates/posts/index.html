@@ -22,14 +22,14 @@
     <br>
     
     {% for post in pages.items %}
-    <div class='col-md-3'>
 
-        <p><h5>{{ post.id }}. {{ post.title }}</h5></p>
-        
-        <p>{{ post.body }}</p>
-
-        <hr>
-
+    <div class='col-md-5'>
+        <div class='_post_content'>
+            <h4>{{ post.title }}</h4>
+            <div class="toast-body">
+                {{ post.body }}
+            </div>
+        </div>
     </div>
 
     {% endfor %}

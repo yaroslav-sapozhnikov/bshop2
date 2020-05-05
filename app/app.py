@@ -13,6 +13,8 @@ from flask_security import current_user
 
 from flask import redirect, url_for, request
 
+from flask_mail import Mail
+
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
@@ -22,7 +24,9 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-from models import Post, User, Role
+mail = Mail(app)
+
+from models import Post, User, Role, Record
 
 
 class AdminMixin:
@@ -47,3 +51,6 @@ admin.add_view(AdminView(Post, db.session()))
 
 user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 security = Security(app, user_datastore)
+
+admin.add_view(AdminView(User, db.session()))
+admin.add_view(AdminView(Record, db.session()))
