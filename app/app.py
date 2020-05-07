@@ -12,9 +12,8 @@ from flask_security import Security
 from flask_security import current_user
 
 from flask import redirect, url_for, request
-
+from form import ExtendedRegisterForm
 from flask_mail import Mail
-
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
@@ -50,7 +49,7 @@ admin.add_view(AdminView(Post, db.session()))
 
 
 user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
-security = Security(app, user_datastore)
+security = Security(app, user_datastore, register_form=ExtendedRegisterForm)
 
 admin.add_view(AdminView(User, db.session()))
 admin.add_view(AdminView(Record, db.session()))

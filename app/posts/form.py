@@ -1,6 +1,5 @@
-from wtforms import Form, StringField, TextAreaField
+from wtforms import Form, TextAreaField
 
 
 class PostForm(Form):
-    title = StringField("Ваше имя")
     body = TextAreaField("Отзыв")

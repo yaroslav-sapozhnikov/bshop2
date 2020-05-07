@@ -12,6 +12,7 @@ from flask_mail import Message
 
 from app import mail
 from flask_login import current_user
+from app import security
 
 
 @app.route('/')

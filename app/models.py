@@ -5,7 +5,7 @@ from flask_security import UserMixin, RoleMixin
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(140))
+    username = db.Column(db.String(140))
     body = db.Column(db.Text)
     created = db.Column(db.DateTime, default=datetime.now())
 
@@ -24,6 +24,7 @@ roles_users = db.Table('roles_users',
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(255), unique=True, index=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())

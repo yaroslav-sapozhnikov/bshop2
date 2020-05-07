@@ -7,6 +7,7 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask_security import login_required
+from flask_security import current_user
 
 
 posts = Blueprint('posts', __name__, template_folder='templates')
@@ -16,10 +17,9 @@ posts = Blueprint('posts', __name__, template_folder='templates')
 @login_required
 def create_post():
     if request.method == 'POST':
-        title = request.form['title']
         body = request.form['body']
         try:
-            post = Post(title=title, body=body)
+            post = Post(username=current_user.username, body=body)
             db.session.add(post)
             db.session.commit()
         except:
