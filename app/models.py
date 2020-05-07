@@ -6,6 +6,7 @@ from flask_security import UserMixin, RoleMixin
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(140))
+    rate = db.Column(db.Integer)
     body = db.Column(db.Text)
     created = db.Column(db.DateTime, default=datetime.now())
 

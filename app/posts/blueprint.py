@@ -17,9 +17,10 @@ posts = Blueprint('posts', __name__, template_folder='templates')
 @login_required
 def create_post():
     if request.method == 'POST':
+        rate = request.form["inlineRadioOptions"]
         body = request.form['body']
         try:
-            post = Post(username=current_user.username, body=body)
+            post = Post(username=current_user.username, body=body, rate=rate)
             db.session.add(post)
             db.session.commit()
         except:

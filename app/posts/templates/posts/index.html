@@ -13,19 +13,31 @@
 
 {% block content %}
 
-    Были у нас и хотите написать отзыв?
+Были у нас и хотите написать отзыв?
+<br>
+<br>
+<p><a href="{{ url_for('posts.create_post')}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Написать отзыв</a></p>
+<hr>
+
+    <div style="width:100%;margin:auto;text-align: center;">
+
+    <p><h2>Отзывы других клиентов</h2></p>
     <br>
-    <br>
-    <p><a href="{{ url_for('posts.create_post')}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Написать отзыв</a></p>
-    <br>
-    <p><h4>Отзывы других клиентов</h4></p>
-    <br>
-    
+
+    </div>
+
     {% for post in pages.items %}
 
-    <div class='col-md-5'>
-        <div class='_post_content'>
+    <div class='col-md-5' style='margin: auto;'>
+        <div style="border:1px solid #000000;border-radius:10px;margin: 20px 0 20px 0;padding:10px;">
             <h4>{{ post.username }}</h4>
+
+            <h6> 
+            {% for i in range(post.rate) %}
+                &#9733;
+            {% endfor %}
+            </h6>
+
             <div class="toast-body">
                 {{ post.body }}
             </div>
@@ -33,9 +45,9 @@
     </div>
 
     {% endfor %}
-
-    <nav>
-        <ul class="pagination">
+    
+    <nav style='margin: auto;'>
+        <ul class="pagination justify-content-center">
             <li {% if not pages.has_prev %} class="page-item disabled" {% endif %}>
                 <a  href="./?page={{ pages.prev_num }}"><span class="page-link"">Previous</span></a>
             </li>
@@ -51,5 +63,6 @@
             </li>
         </ul>
       </nav>
+
 
 {% endblock %}
