@@ -12,7 +12,6 @@ from flask_security import Security
 from flask_security import current_user
 
 from flask import redirect, url_for, request
-from form import ExtendedRegisterForm
 from flask_mail import Mail
 
 app = Flask(__name__)
@@ -26,6 +25,7 @@ manager.add_command('db', MigrateCommand)
 mail = Mail(app)
 
 from models import Post, User, Role, Record
+from form import ExtendedRegisterForm
 
 
 class AdminMixin:

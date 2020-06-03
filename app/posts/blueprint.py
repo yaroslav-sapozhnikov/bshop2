@@ -35,7 +35,7 @@ def create_post():
 def index():
     posts = Post.query.order_by(Post.id.desc())
     page = request.args.get('page')
-
+    
     if page and page.isdigit():
         page = int(page)
     else:

@@ -14,7 +14,7 @@ class Post(db.Model):
         super(Post, self).__init__(*args, **kwargs)
 
     def __repr__(self):
-        return f'<Post id: {self.id}, Post title: {self.title}'
+        return f'<Post id: {self.id}, Post user: {self.username}'
 
 
 roles_users = db.Table('roles_users',
@@ -41,7 +41,7 @@ class Role(db.Model, RoleMixin):
 
 class Record(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    mobile = db.Column(db.String(20))
+    mobile = db.Column(db.String(20), nullable=False)
     service = db.Column(db.String(100))
     time = db.Column(db.String(100))
 
