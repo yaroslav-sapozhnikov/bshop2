@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+    Записать на услугу
+
+{% endblock %}
+
+
+{% block content_title %}
+
+    Напишите отзыв о нас!
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class='col-md-6'>
+    <form action="{{ url_for('record_page')}}" method="POST">
+        <div class="form-group">
+            {{ form.mobile.label(class="form-control-label") }}
+            {{ form.mobile(class="form-control",  pattern="[+]\d{1}\d{3}\d{3}\d{2}\d{2}", minlength="12", maxlength="12")}}
+            <div class="alert alert-primary" role="alert">
+                Номер телефона должен быть в виде +71234567890
+            </div>
+            {{ form.service.label(class="form-control-label") }}
+            {{ form.service(class="form-control")}}
+            {{ form.time.label(class="form-control-label") }}
+            {{ form.time(class="form-control")}}
+        </div>
+            <button type="submit" class="btn btn-outline-success">Подтвердить</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+    Успешно
+
+{% endblock %}
+
+
+{% block content_title %}
+
+    Вы успешно записаны!
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class='col-md-6'>
+    <h4>Услуга: {{ service }}</h4>
+    <h4>Время: {{ time }}</h4><br>
+    <a href="{{ url_for('index')}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Вернуться на главную</a><br>
+</div>
+
+{% endblock %}
